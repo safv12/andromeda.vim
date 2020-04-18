@@ -1,5 +1,9 @@
 # Andromeda.vim
 
+[![license tag](https://img.shields.io/badge/license-MIT-green)](https://img.shields.io/badge/license-MIT-green)
+[![version](https://img.shields.io/badge/version-v0.1.0-blueviolet)](https://img.shields.io/badge/version-v0.1.0-blueviolet)
+[![version](https://img.shields.io/badge/downloads-1-red)](https://img.shields.io/badge/downloads-1-red)
+
 A vim theme inspired by [Andromeda](https://github.com/EliverLara/Andromeda) theme.
 
 Andromeda.vim theme supports graphical Vim and console Vim.
