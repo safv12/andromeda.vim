@@ -30,6 +30,10 @@ set background=dark
 colorscheme andromeda
 ```
 
+## Contribute
+
+This is an in-progress theme. If you have any problem feel free to open an issue or create a pull request. I'll attend the issues and revisions as soon as possible.
+
 ## Licensing
 
 Andromeda.vim is licensed under the [MIT License](./LICENSE.txt).
