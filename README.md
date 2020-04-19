@@ -1,8 +1,7 @@
 # Andromeda.vim
 
 [![license tag](https://img.shields.io/badge/license-MIT-green)](https://img.shields.io/badge/license-MIT-green)
-[![version](https://img.shields.io/badge/version-v0.1.0-blueviolet)](https://img.shields.io/badge/version-v0.1.0-blueviolet)
-[![version](https://img.shields.io/badge/downloads-1-red)](https://img.shields.io/badge/downloads-1-red)
+[![version](https://img.shields.io/badge/version-v0.1.1-blueviolet)](https://img.shields.io/badge/version-v0.1.1-blueviolet)
 
 A vim theme inspired by [Andromeda](https://github.com/EliverLara/Andromeda) theme.
 
