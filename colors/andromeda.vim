@@ -1,3 +1,8 @@
+" Vim color file
+" theme: andromeda
+" maintainer: https://github.com/safv12
+" License: The MIT License (MIT)
+
 set background=dark
 highlight clear
 
@@ -8,96 +13,97 @@ endif
 set t_Co=256
 let g:colors_name = "andromeda"
 
-""" Background
-hi Cursor ctermfg=235 ctermbg=15 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
-hi CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
-hi CursorLine ctermfg=NONE ctermbg=15 cterm=NONE guifg=NONE guibg=#ffffff gui=NONE
-hi Folded ctermfg=235 ctermbg=241 cterm=NONE guifg=#23262e guibg=#5f6167 gui=NONE
-hi LineNr ctermfg=243 ctermbg=235 cterm=NONE guifg=#746f77 guibg=#23262e gui=NONE
-hi MatchParen ctermfg=15 ctermbg=241 cterm=NONE guifg=#ffffff guibg=#5f6167 gui=NONE
-hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#d5ced9 guibg=#23262e gui=NONE
-hi VertSplit ctermfg=234 ctermbg=234 cterm=NONE guifg=#1b1d23 guibg=#1b1d23 gui=NONE
-hi Visual ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#303541 gui=NONE
+" vim function used to configure the vim highlight.
+function! s:SetHighlight(group, fg, bg, attr)
+  let l:attr = a:attr
+  if empty(l:attr)
+    let l:attr = 'none'
+  endif
+  if !empty(a:fg)
+    exec 'hi ' . a:group . ' ctermfg=' . a:fg[1] ' guifg=' . a:fg[0]
+  endif
+  if !empty(a:bg)
+    exec 'hi ' . a:group . ' ctermbg=' . a:bg[1] . ' guibg=' . a:bg[0]
+  endif
+  if !empty(l:attr)
+    exec 'hi ' . a:group . ' gui=' . l:attr . ' cterm=' . l:attr
+  endif
+endfun
 
-""" Comment color
-hi Comment ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=NONE
-hi Directory ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=NONE
-hi Identifier ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=italic
-hi SpecialComment ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=NONE
-hi TabLine ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=bold
-hi Todo ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=bold
-" js
-hi jsEnvComment ctermfg=241 ctermbg=NONE cterm=NONE guifg=#5f6167 guibg=NONE gui=NONE
+""" Color palette
+let s:bg = ['#23262e', 235]
+let s:comments = ['#5f6167', 241]
+let s:white = ['#ffffff', 15]
+let s:invisibles = ['#333844', 237]
+let s:black = ['#1b1d23', 234]
+let s:cyan = ['#00e8c6', 44 ]
+let s:red = ['#ee5d43', 203]
+let s:green = ['#96e072', 113]
+let s:purple = ['#c74ded', 171]
+let s:yellow = ['#ffe66d', 221]
+let s:orange = ['#f39c12', 214]
+""" End of color palette
 
-""" Red
-hi Boolean ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=NONE
-hi Character ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=NONE
-hi DiffAdd ctermfg=203 ctermbg=64 cterm=NONE guifg=#ee5d43 guibg=#46830c gui=bold
-hi DiffChange ctermfg=203 ctermbg=237 cterm=NONE guifg=#ee5d43 guibg=#243955 gui=NONE
-hi DiffText ctermfg=203 ctermbg=24 cterm=NONE guifg=#ee5d43 guibg=#204a87 gui=bold
-hi ErrorMsg ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=NONE
-hi Float ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=NONE
-hi Special ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=NONE
-hi StatusLine ctermfg=203 ctermbg=241 cterm=NONE guifg=#ee5d43 guibg=#64645e gui=bold
-hi StatusLineNC ctermfg=203 ctermbg=241 cterm=NONE guifg=#ee5d43 guibg=#64645e gui=NONE
-hi Title ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=bold
-" js
-hi jsOperator ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ee5d43 guibg=NONE gui=bold
+""" Vim editor
+call s:SetHighlight('Boolean', s:red, '', '')
+call s:SetHighlight('Comment', s:comments, '', '')
+call s:SetHighlight('Conditional', s:purple, '', '')
+call s:SetHighlight('Constant', s:yellow, '', '')
+call s:SetHighlight('Cursor', s:bg, s:white, '')
+call s:SetHighlight('CursorColumn', '', s:bg, '')
+call s:SetHighlight('CursorLine', '', s:white, '')
+call s:SetHighlight('Define', s:purple, '', '')
+call s:SetHighlight('Directory', s:comments, s:bg, '')
+call s:SetHighlight('EndOfBuffer', '', '', '')
+call s:SetHighlight('ErrorMsg', s:red, s:bg, '')
+call s:SetHighlight('Float', s:red, '', '')
+call s:SetHighlight('Folded', s:bg, s:comments, '')
+call s:SetHighlight('Function', s:yellow, '', '')
+call s:SetHighlight('Identifier', s:cyan, s:bg, '')
+call s:SetHighlight('Keyword', s:purple, '', '')
+call s:SetHighlight('Label', s:green, '', '')
+call s:SetHighlight('LineNr', s:comments, s:bg, '')
+call s:SetHighlight('MatchParen', s:white, s:comments, '')
+call s:SetHighlight('ModeMsg', '', '', '')
+call s:SetHighlight('NonText', s:invisibles, s:bg, '')
+call s:SetHighlight('Normal', s:white, s:bg, '')
+call s:SetHighlight('Number', s:orange, '', '')
+call s:SetHighlight('Operator', s:purple, '', '')
+call s:SetHighlight('Pmenu', '', '', '')
+call s:SetHighlight('PmenuSel', s:invisibles, '', '')
+call s:SetHighlight('PreProc', s:purple, '', '')
+call s:SetHighlight('Search', s:bg, s:orange, '')
+call s:SetHighlight('Special', s:red, '', '')
+call s:SetHighlight('SpecialComment', s:comments, '', '')
+call s:SetHighlight('SpecialKey', s:invisibles, s:invisibles, '')
+call s:SetHighlight('Statement', s:purple, '', '')
+call s:SetHighlight('StatusLine', s:red, s:comments, '')
+call s:SetHighlight('StatusLineNC', s:red, s:comments, '')
+call s:SetHighlight('StorageClass', s:purple, '', '')
+call s:SetHighlight('String', s:green, '', '')
+call s:SetHighlight('TabLine', s:comments, '', '')
+call s:SetHighlight('TabLineFill', '', '', '')
+call s:SetHighlight('TabLineSel', s:cyan, '', '')
+call s:SetHighlight('Tag', s:purple, '', '')
+call s:SetHighlight('Terminal', '', '', '')
+call s:SetHighlight('Title', s:red, '', '')
+call s:SetHighlight('Todo', s:comments, '', 'bold')
+call s:SetHighlight('Type', s:purple, '', '')
+call s:SetHighlight('VertSplit', s:black, s:black, '')
+call s:SetHighlight('Visual', '', s:invisibles, '')
+call s:SetHighlight('WarningMsg', s:purple, '', '')
+""" End of vim editor
 
-""" Green
-hi Label ctermfg=113 ctermbg=NONE cterm=NONE guifg=#96e072 guibg=NONE gui=NONE
-hi String ctermfg=113 ctermbg=NONE cterm=NONE guifg=#96e072 guibg=NONE gui=NONE
-
-""" Purple
-hi Conditional ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi Define ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi Keyword ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi Operator ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi PreProc ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi Statement ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi StorageClass ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=italic
-hi Tag ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi Type ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-hi WarningMsg ctermfg=15 ctermbg=171 cterm=NONE guifg=#f8f8f0 guibg=#c74ded gui=NONE
-" js
-hi javaScriptFunction ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=italic
-hi javaScriptRailsFunction ctermfg=171 ctermbg=NONE cterm=NONE guifg=#c74ded guibg=NONE gui=NONE
-
-""" Yellow
-hi Constant ctermfg=221 ctermbg=NONE cterm=NONE guifg=#ffe66d guibg=NONE gui=NONE
-hi Function ctermfg=221 ctermbg=NONE cterm=NONE guifg=#ffe66d guibg=NONE gui=NONE
-" js
-hi jsGlobalNodeObjects ctermfg=221 ctermbg=NONE cterm=NONE guifg=#ffe66d guibg=NONE gui=bold
-
-""" Orange
-hi Number ctermfg=214 ctermbg=NONE cterm=NONE guifg=#f39c12 guibg=NONE gui=NONE
-hi Search ctermfg=NONE ctermbg=214 cterm=NONE guifg=NONE guibg=#f39c12 gui=NONE
-" js
-hi jsBracket ctermfg=214 ctermbg=NONE cterm=NONE guifg=#f39c12 guibg=NONE gui=NONE
-hi jsIfElseBlock ctermfg=214 ctermbg=NONE cterm=NONE guifg=#f39c12 guibg=NONE gui=NONE
-hi jsNumber ctermfg=214 ctermbg=NONE cterm=NONE guifg=#f39c12 guibg=NONE gui=NONE
-
-""" Dark grey
-hi NonText ctermfg=237 ctermbg=235 cterm=NONE guifg=#333844 guibg=#23262e gui=NONE
-hi PmenuSel ctermbg=237 ctermbg=NONE cterm=NONE guifg=NONE guibg=#333844 gui=NONE
-hi SpecialKey ctermfg=237 ctermbg=237 cterm=NONE guifg=#333844 guibg=#3c3d37 gui=NONE
-
-""" Cyan
-" NERDTree
-hi NERDTreeCWD ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=NONE
-hi TabLineSel ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=NONE
-" js
-hi jsArrowFuncArgs ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=bold
-hi jsFuncBlock ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=NONE
-hi jsObjectProp ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=bold
-hi jsParenIfElse ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=bold
-hi jsVariableDef ctermfg=44 ctermbg=NONE cterm=NONE guifg=#00e8c6 guibg=NONE gui=NONE
-
-""" NONE
-hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi ModeMsg ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi Terminal ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-" js
-hi javaScriptBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+""" Javascript
+call s:SetHighlight('jsArrowFuncArgs', s:cyan, '', '')
+call s:SetHighlight('jsBracket', s:orange, '', '')
+call s:SetHighlight('jsEnvComment', s:comments, '', '')
+call s:SetHighlight('jsFuncBlock', s:cyan, '', '')
+call s:SetHighlight('jsGlobalNodeObjects', s:yellow, '', '')
+call s:SetHighlight('jsIfElseBlock', s:orange, '', '')
+call s:SetHighlight('jsNumber', s:orange, '', '')
+call s:SetHighlight('jsObjectProp', s:cyan, '', '')
+call s:SetHighlight('jsOperator', s:red, '', '')
+call s:SetHighlight('jsParenIfElse', s:cyan, '', '')
+call s:SetHighlight('jsVariableDef', s:cyan, '', '')
+""" End of Javascript
